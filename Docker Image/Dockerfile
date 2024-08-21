@@ -18,8 +18,10 @@ RUN cd /opt && \
 # download and install spark
 RUN mkdir -p /opt && \
     cd /opt && \
-    curl http://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz | \
-        tar -zx && \
+     wget --no-verbose http://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz 
+     
+RUN cd /opt/ && \
+    tar -zxf  spark-${SPARK_VERSION}-bin-without-hadoop.tgz && \
     ln -s spark-${SPARK_VERSION}-bin-without-hadoop spark && \
     echo Spark ${SPARK_VERSION} installed in /opt
 
