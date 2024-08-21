@@ -3,12 +3,12 @@ FROM openjdk:11
 
 # define spark and hadoop versions
 ENV SPARK_VERSION=3.3.1
-ENV HADOOP_VERSION=3.3.1
+ENV HADOOP_VERSION=3.3.4
 
 # download and install hadoop
 RUN mkdir -p /opt && \
     cd /opt && \
-    wget --no-verbose http://10.2.66.129/hadoop/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz 
+    wget --no-verbose http://10.2.66.129/hadoop/hadoop-${HADOOP_VERSION}.tar.gz
 
 RUN cd /opt && \
     tar -xzf hadoop-${HADOOP_VERSION}.tar.gz hadoop-${HADOOP_VERSION}/lib/native && \
@@ -18,7 +18,7 @@ RUN cd /opt && \
 # download and install spark
 RUN mkdir -p /opt && \
     cd /opt && \ 
-     wget --no-verbose http://10.2.66.129/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz 
+     wget --no-verbose http://10.2.66.129/spark/spark-{SPARK_VERSION}-bin-without-hadoop.tgz 
      
 RUN cd /opt/ && \
     tar -zxf  spark-${SPARK_VERSION}-bin-without-hadoop.tgz && \
