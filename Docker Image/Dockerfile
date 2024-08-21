@@ -8,8 +8,10 @@ ENV HADOOP_VERSION=3.3.1
 # download and install hadoop
 RUN mkdir -p /opt && \
     cd /opt && \
-    curl http://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | \
-        tar -x hadoop-${HADOOP_VERSION}/lib/native && \
+    wget http://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz 
+
+RUN cd /opt && \
+    tar -xzf hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz hadoop-${HADOOP_VERSION}/lib/native && \
     ln -s hadoop-${HADOOP_VERSION} hadoop && \
     echo Hadoop ${HADOOP_VERSION} native libraries installed in /opt/hadoop/lib/native
 
