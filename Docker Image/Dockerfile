@@ -1,5 +1,5 @@
 # base image
-FROM openjdk:17
+FROM eclipse-temurin:8-jdk
 
 # define spark and hadoop versions
 ENV SPARK_VERSION=3.3.4
