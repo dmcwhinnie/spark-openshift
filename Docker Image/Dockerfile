@@ -8,7 +8,7 @@ ENV HADOOP_VERSION=3.3.1
 # download and install hadoop
 RUN mkdir -p /opt && \
     cd /opt && \
-    wget --no-verbose http://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz 
+    wget --no-verbose http://uslphdpws001.apachecorp.com/hadoop/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz 
 
 RUN cd /opt && \
     tar -xzf hadoop-${HADOOP_VERSION}.tar.gz hadoop-${HADOOP_VERSION}/lib/native && \
@@ -17,8 +17,8 @@ RUN cd /opt && \
 
 # download and install spark
 RUN mkdir -p /opt && \
-    cd /opt && \
-     wget --no-verbose http://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz 
+    cd /opt && \ 
+     wget --no-verbose http://uslphdpws001.apachecorp.com/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz 
      
 RUN cd /opt/ && \
     tar -zxf  spark-${SPARK_VERSION}-bin-without-hadoop.tgz && \
