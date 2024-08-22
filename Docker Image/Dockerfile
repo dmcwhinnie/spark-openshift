@@ -18,7 +18,7 @@ RUN cd /opt && \
 # download and install spark
 RUN mkdir -p /opt && \
     cd /opt && \ 
-     wget --no-verbose http://10.2.66.129/spark/spark-${SPARK_VERSION}-bin-without-hadoop.tgz 
+     wget --no-verbose http://10.2.66.129/spark/spark-${SPARK_VERSION}-bin-hadoop3.tgz
      
 RUN cd /opt/ && \
     tar -zxf  spark-${SPARK_VERSION}-bin-without-hadoop.tgz && \
