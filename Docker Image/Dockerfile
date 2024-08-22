@@ -7,14 +7,14 @@ ENV HADOOP_VERSION=3.3.4
 ARG spark_uid=185
 
 # download and install hadoop
-RUN mkdir -p /opt && \
-    cd /opt && \
-    wget --no-verbose http://10.2.66.129/hadoop/hadoop-${HADOOP_VERSION}.tar.gz
+#RUN mkdir -p /opt && \
+#    cd /opt && \
+#    wget --no-verbose http://10.2.66.129/hadoop/hadoop-${HADOOP_VERSION}.tar.gz
 
-RUN cd /opt && \
-    tar -xzf hadoop-${HADOOP_VERSION}.tar.gz hadoop-${HADOOP_VERSION}/lib/native && \
-    ln -s hadoop-${HADOOP_VERSION} hadoop && \
-    echo Hadoop ${HADOOP_VERSION} native libraries installed in /opt/hadoop/lib/native
+#RUN cd /opt && \
+#    tar -xzf hadoop-${HADOOP_VERSION}.tar.gz hadoop-${HADOOP_VERSION}/lib/native && \
+#    ln -s hadoop-${HADOOP_VERSION} hadoop && \
+#    echo Hadoop ${HADOOP_VERSION} native libraries installed in /opt/hadoop/lib/native
 
 # download and install spark
 RUN mkdir -p /opt && \
@@ -36,7 +36,7 @@ ENV HADOOP_HOME="/opt/hadoop"
 ENV PATH="$SPARK_HOME/bin:$HADOOP_HOME/bin:$PATH"
 ENV SPARK_DIST_CLASSPATH = $(/opt/hadoop/bin classpath)
 
-RUN chmod g+w /etc/hosts
+RUN chmod a+w /etc/hosts
 RUN chmod a+x /spark-master
 
 #ENTRYPOINT [ "spark-master" ]
