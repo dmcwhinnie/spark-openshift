@@ -4,6 +4,7 @@ FROM eclipse-temurin:8-jdk
 # define spark and hadoop versions
 ENV SPARK_VERSION=3.3.4
 ENV HADOOP_VERSION=3.3.4
+ARG spark_uid=185
 
 # download and install hadoop
 RUN mkdir -p /opt && \
@@ -34,3 +35,13 @@ ENV HADOOP_HOME="/opt/hadoop"
 
 ENV PATH="$SPARK_HOME/bin:$HADOOP_HOME/bin:$PATH"
 ENV SPARK_DIST_CLASSPATH = $(/opt/hadoop/bin classpath)
+
+RUN chmod g+w /etc/hosts
+RUN chmod a+x /spark-master
+
+#ENTRYPOINT [ "spark-master" ]
+# Specify the User that the actual main process will run as
+USER ${spark_uid}
+
+
+
