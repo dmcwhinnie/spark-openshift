@@ -21,8 +21,8 @@ RUN mkdir -p /opt && \
      wget --no-verbose http://10.2.66.129/spark/spark-${SPARK_VERSION}-bin-hadoop3.tgz
      
 RUN cd /opt/ && \
-    tar -zxf  spark-${SPARK_VERSION}-bin-without-hadoop.tgz && \
-    ln -s spark-${SPARK_VERSION}-bin-without-hadoop spark && \
+    tar -zxf  spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
+    ln -s spark-${SPARK_VERSION}-bin-hadoop3 spark && \
     echo Spark ${SPARK_VERSION} installed in /opt
 
 # add scripts and update spark default config
