@@ -1,4 +1,4 @@
-# base image
+ # base image
 FROM eclipse-temurin:8-jdk
 
 # define spark and hadoop versions
@@ -37,6 +37,7 @@ ENV HADOOP_HOME="/opt/hadoop"
 
 ENV PATH="$SPARK_HOME/bin:$HADOOP_HOME/bin:$PATH"
 ENV SPARK_DIST_CLASSPATH = $(/opt/hadoop/bin classpath)
+ENV SPARK_NO_DAEMONIZE=TRUE
 
 RUN chmod 777 /etc/hosts
 RUN chmod a+x /spark-master
