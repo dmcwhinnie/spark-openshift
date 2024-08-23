@@ -26,6 +26,8 @@ RUN cd /opt/ && \
     ln -s spark-${SPARK_VERSION}-bin-hadoop3 spark && \
     echo Spark ${SPARK_VERSION} installed in /opt
 
+RUN mkdir /opt/spark/logs && chmod 777 /opt/spark/logs
+
 # add scripts and update spark default config
 ADD common.sh spark-master spark-worker /
 ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
@@ -36,12 +38,12 @@ ENV HADOOP_HOME="/opt/hadoop"
 ENV PATH="$SPARK_HOME/bin:$HADOOP_HOME/bin:$PATH"
 ENV SPARK_DIST_CLASSPATH = $(/opt/hadoop/bin classpath)
 
-RUN chmod a+w /etc/hosts
+RUN chmod 777 /etc/hosts
 RUN chmod a+x /spark-master
 
-#ENTRYPOINT [ "spark-master" ]
 # Specify the User that the actual main process will run as
 USER ${spark_uid}
 
+ENTRYPOINT [ "/opt/spark/sbin/start-master.sh" ]
 
 
