@@ -1,20 +1,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: spark-master
+  name: apa-spark-master
   # namespace: spark
 spec:
   replicas: 1 
   selector:
     matchLabels:
-      component: spark-master
+      component: apa-spark-master
   template:
     metadata:
       labels:
-        component: spark-master
+        component: apa-spark-master
     spec:
       containers:
-        - name: spark-master
+        - name: apa-spark-master
           image: <custom-image>
           command: ["/spark-master"]
           ports:
