@@ -8,7 +8,7 @@ if ! getent hosts apa-spark-master; then
 fi
 
 #/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://apa-spark-master:7077 --webui-port 8081
-/opt/spark/sbin/start-worker.sh spark://apa-spark-master:7077 
+/opt/spark/sbin/start-worker.sh spark://apa-spark-master-hadoop.apps.rhlos-poc.apachecorp.com:7077 
 
 
 memory = '10g'
