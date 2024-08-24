@@ -41,6 +41,7 @@ ENV SPARK_NO_DAEMONIZE=TRUE
 
 RUN chmod 777 /etc/hosts
 RUN chmod a+x /spark-master
+RUN chmod a+x /spark-worker
 
 # Specify the User that the actual main process will run as
 USER ${spark_uid}
