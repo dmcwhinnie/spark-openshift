@@ -45,6 +45,6 @@ RUN chmod a+x /spark-master
 # Specify the User that the actual main process will run as
 USER ${spark_uid}
 
-ENTRYPOINT [ "/opt/spark/sbin/start-master.sh" ]
+# ENTRYPOINT [ "/opt/spark/sbin/start-master.sh" ]
 
 
