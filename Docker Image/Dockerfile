@@ -27,6 +27,7 @@ RUN cd /opt/ && \
     echo Spark ${SPARK_VERSION} installed in /opt
 
 RUN mkdir /opt/spark/logs && chmod 777 /opt/spark/logs
+RUN mkdir /opt/spark/work && chmod 777 /opt/spark/work
 
 # add scripts and update spark default config
 ADD common.sh spark-master spark-worker /
@@ -38,6 +39,9 @@ ENV HADOOP_HOME="/opt/hadoop"
 ENV PATH="$SPARK_HOME/bin:$HADOOP_HOME/bin:$PATH"
 ENV SPARK_DIST_CLASSPATH = $(/opt/hadoop/bin classpath)
 ENV SPARK_NO_DAEMONIZE=TRUE
+
+
+ENV SPARK_WORKER_DIR=/opt/spark/work
 
 RUN chmod 777 /etc/hosts
 RUN chmod a+x /spark-master
